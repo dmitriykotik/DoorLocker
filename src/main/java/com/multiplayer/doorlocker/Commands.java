@@ -85,26 +85,58 @@ public class Commands implements CommandExecutor {
                         return true;
                     }
 
-                    if (block != null && block.getType() == Material.IRON_DOOR) {
-                        Block bottomBlock = getBottomBlock(block);
-                        if (bottomBlock.hasMetadata("doorKey")) {
-                            sendTitle(player, vars.door_locked);
-                            return true;
-                        }
-                        bottomBlock.setMetadata("doorKey", new FixedMetadataValue(plugin, key));
-                        bottomBlock.setMetadata("doorOwner", new FixedMetadataValue(plugin, player.getUniqueId().toString()));
-                        saveDoorData(bottomBlock, key, player.getUniqueId());
-                        sendTitle(player, vars.lock_is_set);
+                    if (!vars.useItemHook) {
+                        if (block != null && block.getType() == Material.IRON_DOOR) {
+                            Block bottomBlock = getBottomBlock(block);
+                            if (bottomBlock.hasMetadata("doorKey")) {
+                                sendTitle(player, vars.door_locked);
+                                return true;
+                            }
+                            bottomBlock.setMetadata("doorKey", new FixedMetadataValue(plugin, key));
+                            bottomBlock.setMetadata("doorOwner", new FixedMetadataValue(plugin, player.getUniqueId().toString()));
+                            saveDoorData(bottomBlock, key, player.getUniqueId());
+                            sendTitle(player, vars.lock_is_set);
 
-                        ItemMeta meta = itemInHand.getItemMeta();
-                        if (meta != null) {
-                            meta.setDisplayName(key);
-                            itemInHand.setItemMeta(meta);
+                            ItemMeta meta = itemInHand.getItemMeta();
+                            if (meta != null) {
+                                meta.setDisplayName(key);
+                                itemInHand.setItemMeta(meta);
+                            } else {
+                                sendTitle(player, vars.rename_denied);
+                            }
                         } else {
-                            sendTitle(player, vars.rename_denied);
+                            sendTitle(player, vars.look_door);
                         }
-                    } else {
-                        sendTitle(player, vars.look_door);
+                    }
+                    else
+                    {
+                        if (itemInHand.getType() == Material.TRIPWIRE_HOOK){
+                            if (block != null && block.getType() == Material.IRON_DOOR) {
+                                Block bottomBlock = getBottomBlock(block);
+                                if (bottomBlock.hasMetadata("doorKey")) {
+                                    sendTitle(player, vars.door_locked);
+                                    return true;
+                                }
+                                bottomBlock.setMetadata("doorKey", new FixedMetadataValue(plugin, key));
+                                bottomBlock.setMetadata("doorOwner", new FixedMetadataValue(plugin, player.getUniqueId().toString()));
+                                saveDoorData(bottomBlock, key, player.getUniqueId());
+                                sendTitle(player, vars.lock_is_set);
+
+                                ItemMeta meta = itemInHand.getItemMeta();
+                                if (meta != null) {
+                                    meta.setDisplayName(key);
+                                    itemInHand.setItemMeta(meta);
+                                } else {
+                                    sendTitle(player, vars.rename_denied);
+                                }
+                            } else {
+                                sendTitle(player, vars.look_door);
+                            }
+                        }
+                        else
+                        {
+                            sendTitle(player, vars.onlyHook);
+                        }
                     }
                 } else {
                     sender.sendMessage(vars.prefix + " " + vars.only_players);

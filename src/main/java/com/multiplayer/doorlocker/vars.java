@@ -1,6 +1,9 @@
 package com.multiplayer.doorlocker;
 
 public class vars {
+    public static Boolean useItemHook = false;
+    public static Long tickOpen = 30L;
+
     public static String prefix = "";
     public static String reload_start = "";
     public static String reload_done = "";
@@ -39,6 +42,7 @@ public class vars {
     public static String doors_player_not_found_part1 = "";
     public static String doors_player_not_found_part2 = "";
     public static String unlock_door = "";
+    public static String onlyHook = "";
 
     public static String key_denied = "";
     public static String you_cant_knock_door = "";

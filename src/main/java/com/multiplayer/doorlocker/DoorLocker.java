@@ -50,6 +50,8 @@ public final class DoorLocker extends JavaPlugin {
         vars.prefix = getConfig().getString("properties.prefix");
         vars.reload_start = getConfig().getString("messages.reload_start");
         vars.reload_done = getConfig().getString("messages.reload_done");
+        vars.useItemHook = getConfig().getBoolean("properties.useItemHook");
+        vars.tickOpen = getConfig().getLong("properties.tickOpen");
         
         vars.command_not_found = getConfig().getString("messages.command_not_found");
         vars.access_denied = getConfig().getString("messages.access_denied");
@@ -85,6 +87,7 @@ public final class DoorLocker extends JavaPlugin {
         vars.doors_player_not_found_part1 = getConfig().getString("messages.doors_player_not_found_part1");
         vars.doors_player_not_found_part2 = getConfig().getString("messages.doors_player_not_found_part2");
         vars.unlock_door = getConfig().getString("messages.unlock_door");
+        vars.onlyHook = getConfig().getString("messages.onlyHook");
 
         vars.key_denied = getConfig().getString("messages.key_denied");
         vars.you_cant_knock_door = getConfig().getString("messages.you_cant_knock_door");

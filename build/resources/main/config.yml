@@ -52,6 +52,10 @@
 
 properties:
   prefix: '§6§l[DoorLocker]§r'
+  # Use only hooks? If this option is enabled, players will only be able to place hooks as a key, not any items.
+  useItemHook: false
+  # Delay. 30 is the default value. Responsible for the delay between opening and closing the door. It is calculated in TICKS.
+  tickOpen: 30
 
 messages:
   reload_start: '§c§o[Rebooting the configuration...]'
@@ -91,6 +95,7 @@ messages:
   doors_player_not_found_part1: '§cДвери игрока'
   doors_player_not_found_part2: 'не найдены.'
   unlock_door: '§cВы должны смотреть на железную дверь, чтобы снять замок.'
+  onlyHook: '§cНа данном сервере выключен режим установки ключа на любой предмет. Используйте крюк.'
 
   key_denied: '§cКлюч не верен.'
   you_cant_knock_door: '§cВы не можете выломать дверь.'

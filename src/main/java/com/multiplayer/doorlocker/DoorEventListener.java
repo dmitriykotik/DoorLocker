@@ -36,23 +36,49 @@ public class DoorEventListener implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            Block block = event.getClickedBlock();
-            if (block != null && block.getType() == Material.IRON_DOOR) {
-                Block bottomBlock = getBottomBlock(block);
-                if (bottomBlock.hasMetadata("doorKey")) {
-                    Player player = event.getPlayer();
-                    ItemStack item = player.getInventory().getItemInMainHand();
-                    MetadataValue metadata = bottomBlock.getMetadata("doorKey").get(0);
-                    String key = metadata.asString();
-                    if (item != null && item.hasItemMeta() && item.getItemMeta().getDisplayName().equals(key)) {
-                        openDoorTemporarily(bottomBlock);
-                        event.setCancelled(true);
-                    } else {
-                        ItemStack itemInHand = player.getInventory().getItemInMainHand();
-                        if (itemInHand == null || itemInHand.getType() == Material.AIR) event.setCancelled(true);
-                        else {
-                            sendTitle(player, vars.key_denied);
+            if (!vars.useItemHook) {
+                Block block = event.getClickedBlock();
+                if (block != null && block.getType() == Material.IRON_DOOR) {
+                    Block bottomBlock = getBottomBlock(block);
+                    if (bottomBlock.hasMetadata("doorKey")) {
+                        Player player = event.getPlayer();
+                        ItemStack item = player.getInventory().getItemInMainHand();
+                        MetadataValue metadata = bottomBlock.getMetadata("doorKey").get(0);
+                        String key = metadata.asString();
+                        if (item != null && item.hasItemMeta() && item.getItemMeta().getDisplayName().equals(key)) {
+                            openDoorTemporarily(bottomBlock);
                             event.setCancelled(true);
+                        } else {
+                            ItemStack itemInHand = player.getInventory().getItemInMainHand();
+                            if (itemInHand == null || itemInHand.getType() == Material.AIR) event.setCancelled(true);
+                            else {
+                                sendTitle(player, vars.key_denied);
+                                event.setCancelled(true);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Block block = event.getClickedBlock();
+                if (block != null && block.getType() == Material.IRON_DOOR) {
+                    Block bottomBlock = getBottomBlock(block);
+                    if (bottomBlock.hasMetadata("doorKey")) {
+                        Player player = event.getPlayer();
+                        ItemStack item = player.getInventory().getItemInMainHand();
+                        MetadataValue metadata = bottomBlock.getMetadata("doorKey").get(0);
+                        String key = metadata.asString();
+                        if (item != null && item.hasItemMeta() && item.getItemMeta().getDisplayName().equals(key) && item.getType() == Material.TRIPWIRE_HOOK) {
+                            openDoorTemporarily(bottomBlock);
+                            event.setCancelled(true);
+                        } else {
+                            ItemStack itemInHand = player.getInventory().getItemInMainHand();
+                            if (itemInHand == null || itemInHand.getType() == Material.AIR) event.setCancelled(true);
+                            else {
+                                sendTitle(player, vars.key_denied);
+                                event.setCancelled(true);
+                            }
                         }
                     }
                 }
@@ -131,7 +157,7 @@ public class DoorEventListener implements Listener {
                     topBlock.setBlockData(topDoor);
 
                     block.getWorld().playSound(block.getLocation(), "minecraft:block.iron_door.close", 1.0f, 1.0f);
-                }, 30L);
+                }, vars.tickOpen);
             }
         }
     }
