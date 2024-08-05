@@ -1,0 +1,15 @@
+name: DoorLocker
+version: '${version}'
+main: com.multiplayer.doorlocker.DoorLocker
+api-version: '1.21'
+commands:
+  doorlocker:
+    description: Plugin for door locks
+    usage: /<command>
+permissions:
+  doorlocker.admin:
+    description: Access using admin commands
+    default: op
+  doorlocker.user:
+    description: Access using user commands
+    default: true

@@ -1,0 +1,99 @@
+#
+#  _____                   _                _
+# |  __ \                 | |              | |
+# | |  | | ___   ___  _ __| |     ___   ___| | _____ _ __
+# | |  | |/ _ \ / _ \| '__| |    / _ \ / __| |/ / _ \ '__|
+# | |__| | (_) | (_) | |  | |___| (_) | (__|   <  __/ |
+# |_____/ \___/ \___/|_|  |______\___/ \___|_|\_\___|_|
+#
+# Warning: Use the ‘§’ symbol to specify a colour or colour
+# symbol. For example: ‘§6’. This example outputs the colour
+# gold. Or ‘§l’. The text will be bold.
+#
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Colour codes:
+# §0 - Black
+# §1 - Dark Blue
+# §2 - Dark Green
+# §3 - Dark Aqua
+# §4 - Dark Red
+# §5 - Dark Purple
+# §6 - Gold
+# §7 - Gray
+# §8 - Dark Gray
+# §9 - Blue
+# §a - Green
+# §b - Aqua
+# §c - Red
+# §d - Light Purple
+# §e - Yellow
+# §f - White
+#
+# §k - Invisible
+# §l - BOLD
+# §m - Strikethrough (-----------)
+# §n - Underline (___________)
+# §o - Italic
+# §r - Reset
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+#
+#  =================- INFO -===================
+#  * File:         | config.yml
+#  * Class:        | *
+#  * Project:      | DoorLocker
+#  * Author:       | dmitriykotik
+#  * Version:      | *
+#  * VerType:      | *
+#  * Main file:    | DoorLocker.java
+#  * [OPEN SOURCE] | *
+#  * [CONSTRUCTOR] | *
+#  ============================================
+#
+
+properties:
+  prefix: '§6§l[DoorLocker]§r'
+
+messages:
+  reload_start: '§c§o[Rebooting the configuration...]'
+  reload_done: '§a§o[Configuration loaded!]'
+
+  command_not_found: '§cДанная команда не обнаружена!'
+  access_denied: '§cУ вас нет прав для выполнения этой команды.'
+  more_args: '§cНедостаточно аргументов или перебор аргументов!'
+
+  help_help: 'Отобразить справку'
+  help_set: 'Установить замок на дверь'
+  help_delete: 'Снять замок с двери'
+  help_destroy: 'Принудительно удалить замок с двери или удалить все замки указанного игрока'
+  help_info: 'Посмотреть информацию о замке двери на которую вы смотрите или посмотреть информацию обо всех замках указанного игрока'
+  help_reload: 'Перезагрузить конфигурацию плагина'
+
+  lock_deleted: '§2Замок удалён.'
+  you_not_owner: '§cВы не являетесь владельцем этой двери.'
+  door_doesnt_have_lock: '§cУ этой двери нет замка.'
+  only_players: '§cЭту команду могут выполнять только игроки.'
+  door_locked: '§cУ этой двери уже есть ключ.'
+  take_any_object: '§cВозьмите любой предмет для создания ключа.'
+  lock_is_set: '§2Замок установлен!'
+  rename_denied: '§cНе удалось переименовать ключ.'
+  look_door: '§cВы должны смотреть на железную дверь, чтобы установить замок.'
+  info_doors_player: '§aИнформация о дверях игрока'
+  info_door: '§aИнформация о двери'
+  world: '§6Мир: §b'
+  coordinates: '§6Координаты: §b'
+  owner: '§6Владелец: §b'
+  key: '§6Ключ: §b'
+  doors_not_found: '§cДвери не найдены.'
+  door_not_lock: '§cЭта дверь не заблокирована.'
+  look_door_info: '§cВы должны смотреть на железную дверь, чтобы получить информацию.'
+  all_doors_deleted_part1: '§aВсе двери игрока'
+  all_doors_deleted_part2: 'были удалены.'
+  doors_player_not_found_part1: '§cДвери игрока'
+  doors_player_not_found_part2: 'не найдены.'
+  unlock_door: '§cВы должны смотреть на железную дверь, чтобы снять замок.'
+
+  key_denied: '§cКлюч не верен.'
+  you_cant_knock_door: '§cВы не можете выломать дверь.'
+
+doors: {}
+
